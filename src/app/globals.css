@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 80 20% 98%;
+    --foreground: 150 10% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 10% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 10% 15%;
+    --primary: 115 25% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 115 20% 93%;
+    --secondary-foreground: 115 25% 25%;
+    --muted: 80 10% 94%;
+    --muted-foreground: 150 5% 45%;
+    --accent: 174 60% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 115 15% 88%;
+    --input: 115 15% 88%;
+    --ring: 115 25% 35%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 150 15% 8%;
+    --foreground: 80 10% 92%;
+    --card: 150 12% 12%;
+    --card-foreground: 80 10% 92%;
+    --popover: 150 12% 12%;
+    --popover-foreground: 80 10% 92%;
+    --primary: 115 30% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 150 12% 18%;
+    --secondary-foreground: 80 10% 85%;
+    --muted: 150 10% 18%;
+    --muted-foreground: 80 5% 55%;
+    --accent: 174 60% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 150 10% 22%;
+    --input: 150 10% 22%;
+    --ring: 115 30% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Camera viewfinder styling */
+.camera-viewfinder {
+  position: relative;
+}
+
+.camera-viewfinder::before {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 1rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Barcode scanner region */
+#barcode-scanner video {
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safety gauge animation */
+@keyframes gauge-fill {
+  from {
+    width: 0%;
+  }
+}
+
+.gauge-fill {
+  animation: gauge-fill 1s ease-out forwards;
+}
+
+/* Pulse ring for capture button */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
